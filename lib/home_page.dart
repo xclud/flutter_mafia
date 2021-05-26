@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mafia/dice_page.dart';
+import 'package:persian/persian.dart';
 import 'package:mafia/mafia_roles.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,25 +27,43 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  String _getPlayerCount() {
+    final c = _selection.entries
+        .where((element) => element.value == true)
+        .toList()
+        .length;
+
+    return '$c نفر'.withPersianNumbers();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('مافیا'),
-      ),
-      body: Column(
-        children: [
-          ListTile(
-            title: const Text('بازیکن ها'),
-            onTap: () {
+        actions: [
+          IconButton(
+            onPressed: () {
               final items = _selection.entries
                   .where((element) => element.value == true)
                   .toList();
 
               items.shuffle();
 
-              print(items.map((e) => e.key).join(', '));
+              final page = DicePage(data: items);
+
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => page));
             },
+            icon: const Icon(Icons.check),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          ListTile(
+            title: const Text('بازیکن ها'),
+            trailing: Text(_getPlayerCount()),
           ),
           Expanded(
             child: ListView(
