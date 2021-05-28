@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               final items = _selection.entries
                   .where((element) => element.value == true)
+                  .map((e) => e.key)
                   .toList();
 
               items.shuffle();
