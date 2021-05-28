@@ -19,16 +19,31 @@ const _undercoverCop = MafiaRole(
   'UNDERCOVER_COP',
 );
 
+const _lecter = MafiaRole(
+  'دکتر لکتر',
+  'مقتول تک تیر انداز را نجات می دهد.',
+  'DR_LECTER',
+  true,
+);
+
+const _beloved = MafiaRole(
+  'معشوقه',
+  'اگر در روز کشته شود، مافیا در شب دو نفر را می کشد.',
+  'BELOVED',
+  true,
+);
+
 const _traitor = MafiaRole(
   'خائن',
   'مافیا است، شب با مافیا بیدار نمی شود.',
   'TRAITOR',
   true,
 );
-const _beloved = MafiaRole(
-  'معشوقه',
-  'معشوقه رییس مافیا.',
-  'BELOVED',
+
+const _godFather = MafiaRole(
+  'رییس مافیا',
+  'حرف آخر را می زند.',
+  'GODFATHER',
   true,
 );
 
@@ -51,7 +66,7 @@ const _detective = MafiaRole(
 );
 
 const _vigilante = MafiaRole(
-  'تک تیرانداز',
+  'تک تیرانداز (حرفه ای)',
   'هر شب یک نفر را می کشد.',
   'VIGILANTE',
 );
@@ -68,15 +83,25 @@ const _dentist = MafiaRole(
   'DENTIST',
 );
 
-const mafiaRoles = [
+const cityRoles = [
   _detective,
   _doctor,
+  _vigilante,
   _witness,
   _undercoverCop,
   _miller,
   _dentist,
   _lawyer,
-  _vigilante,
+];
+
+const evilRoles = [
+  _godFather,
+  _lecter,
   _beloved,
   _traitor,
+];
+
+const mafiaRoles = [
+  ...cityRoles,
+  ...evilRoles,
 ];
