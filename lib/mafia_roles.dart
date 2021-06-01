@@ -59,6 +59,12 @@ const _miller = MafiaRole(
   'MILLER',
 );
 
+
+const _hardLife = MafiaRole(
+  'جان سخت',
+  'دوبار می میرد.',
+  'HARD_LIFE',
+);
 const _detective = MafiaRole(
   'کاراگاه',
   'مافیا را پیدا می کند.',
@@ -87,6 +93,7 @@ const cityRoles = [
   _detective,
   _doctor,
   _vigilante,
+  _hardLife,
   _witness,
   _undercoverCop,
   _miller,
